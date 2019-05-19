@@ -243,6 +243,31 @@
             }
         }
     </style>
+
+    <style>
+        .schema-list {
+            margin-top: 24px;
+        }
+
+        .schema-list ul {
+            display: flex;
+            flex-direction: column;
+            list-style-type: disc;
+            list-style-position: inside;
+            padding: 0;
+            margin: 0;
+        }
+
+        .schema-list ul li {
+            display: block;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .schema-list ul li+li {
+            padding-top: 8px;
+        }
+    </style>
 </head>
 
 <body>
@@ -253,11 +278,9 @@
         <div class="container">
             <div class="banner-container">
                 <div class="site-logo">
-                    <a href="http://schemas.dagonmetric.com" class="site-logo-link"
-                        aria-label="JSON Schemas">
-                        <img src="http://schemas.dagonmetric.com/assets/images/appicons/v1/logo.png"
-                            alt="JSON Schemas" class="site-logo-img" role="presentation"
-                            aria-hidden="true" width="800" height="800">
+                    <a href="http://schemas.dagonmetric.com" class="site-logo-link" aria-label="JSON Schemas">
+                        <img src="http://schemas.dagonmetric.com/assets/images/appicons/v1/logo.png" alt="JSON Schemas"
+                            class="site-logo-img" role="presentation" aria-hidden="true" width="800" height="800">
                     </a>
                 </div>
                 <span class="site-name" role="presentation">JSON Schemas</span>
@@ -270,6 +293,16 @@
                 A collection of JSON schema files used on some DagonMetric projects.. View on <a
                     href="https://github.com/DagonMetric/schemas">GitHub.</a>.
             </div>
+        </div>
+        <div class="schema-list container">
+            <ul>
+                <li>
+                    <a href="/angular-build/schema.json">angular-build</a>
+                </li>
+                <li>
+                    <a href="/translit-rules/schema.json">translit-rules</a>
+                </li>
+            </ul>
         </div>
     </main>
 </body>
