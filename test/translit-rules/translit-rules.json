@@ -1,0 +1,32 @@
+{
+  "$schema": "./../../docs/translit-rules/schema.json#",
+  "phases": [
+    {
+      "description": "Phase 1",
+      "tplVar": {
+        "$x": ""
+      },
+      "tplSeqVar": {
+        "$y": ""
+      },
+      "rules": [
+        {
+          "from": "",
+          "to": "",
+          "description": "",
+          "matchOnly": false,
+          "matchOnStart": false,
+          "tpl": true,
+          "qtChars": [""],
+          "qtMinLen": 1,
+          "tplVar": {
+            "$x": "$x"
+          },
+          "tplSeqVar": {
+            "$y": "$y"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "title": "JSON schema for the TranslitRule file",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "anyOf": [
+    {
+      "$ref": "#/definitions/TranslitRule"
+    },
+    {
+      "items": {
+        "$ref": "#/definitions/TranslitRulePhase"
+      },
+      "type": "array"
+    }
+  ],
+  "definitions": {
+    "TranslitRule": {
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "description": "Link to schema file.",
+          "type": "string"
+        },
+        "phases": {
+          "description": "Transliterate rule phases.",
+          "items": {
+            "$ref": "#/definitions/TranslitRulePhase"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "TranslitRuleItem": {
+      "additionalProperties": false,
+      "description": "Transliterate rule item.",
+      "properties": {
+        "description": {
+          "description": "Description for the rule item.",
+          "type": "string"
+        },
+        "from": {
+          "description": "Search regular expression pattern for input string.",
+          "type": "string"
+        },
+        "matchOnStart": {
+          "description": "If true, only match and replace on start of string.",
+          "type": "boolean"
+        },
+        "matchOnly": {
+          "description": "If true, match only without replace for skip purpose.",
+          "type": "boolean"
+        },
+        "qtChars": {
+          "description": "Character array or char:index array for quick test checking.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "qtMinLen": {
+          "description": "Minimum input string length for quick test checking.",
+          "type": "number"
+        },
+        "to": {
+          "description": "The value to replace the search value with.",
+          "type": "string"
+        },
+        "tpl": {
+          "description": "Set true for template replacement.",
+          "type": "boolean"
+        },
+        "tplSeqVar": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Rule item level template loop/sequence variables definition.",
+          "type": "object"
+        },
+        "tplVar": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Rule item level template variables definition.",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "TranslitRulePhase": {
+      "additionalProperties": false,
+      "description": "Transliterate rule phase.",
+      "properties": {
+        "description": {
+          "description": "Description for the rule phase.",
+          "type": "string"
+        },
+        "rules": {
+          "description": "Array of Transliterate rule items.",
+          "items": {
+            "$ref": "#/definitions/TranslitRuleItem"
+          },
+          "type": "array"
+        },
+        "tplSeqVar": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Phase level global template loop/sequence variables definition.",
+          "type": "object"
+        },
+        "tplVar": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Phase level global template variables definition.",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

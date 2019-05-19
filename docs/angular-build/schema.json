@@ -1,0 +1,1802 @@
+{
+  "additionalProperties": true,
+  "definitions": {
+    "AfterEmitCleanOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "excludes": {
+          "description": "Path array to exclude from deleting.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "paths": {
+          "description": "Paths to be deleted.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "AppEnvOverridesOptions": {
+      "additionalProperties": {
+        "$ref": "#/definitions/AppProjectConfigBase"
+      },
+      "type": "object"
+    },
+    "AppProjectConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "description": "Link to schema.",
+          "type": "string"
+        },
+        "aot": {
+          "description": "Build using Ahead of Time compilation.",
+          "type": "boolean"
+        },
+        "banner": {
+          "description": "Banner text to add at the top of each generated files. It can be text file name or raw text.",
+          "type": "string"
+        },
+        "baseHref": {
+          "description": "The base URL for all relative URLs on a page.",
+          "type": "string"
+        },
+        "buildOptimizer": {
+          "description": "Set true to enable build optimizer.",
+          "type": "boolean"
+        },
+        "bundleAnalyzer": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/BundleAnalyzerOptions"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Webpack Bundle analyzer options."
+        },
+        "clean": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CleanOptions"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Clean options."
+        },
+        "commonChunk": {
+          "description": "If true, chunk a separate bundle containing common code used across multiple bundles.",
+          "type": "boolean"
+        },
+        "concatenateModules": {
+          "description": "Set true to enable scope hoisting.",
+          "type": "boolean"
+        },
+        "copy": {
+          "description": "Copy options.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/AssetEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "entry": {
+          "description": "The main typescript entry file to be bundled.",
+          "type": "string"
+        },
+        "envOverrides": {
+          "$ref": "#/definitions/AppEnvOverridesOptions",
+          "description": "To override properties based on build environment."
+        },
+        "environmentVariables": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "boolean"
+                ]
+              },
+              "type": "object"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Custom environment variables to be included in bundle."
+        },
+        "extends": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The name of build-in configuration preset, or path(s) to other configuration files which are extended by this configuration."
+        },
+        "externals": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExternalsObjectElement"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/ExternalsObjectElement"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The externals configuration option provides a way of excluding dependencies from the output bundle."
+        },
+        "extractCss": {
+          "description": "If true, build process will extracts css specified in styles entry as styles.css.",
+          "type": "boolean"
+        },
+        "extractLicenseOutputFilename": {
+          "description": "Output file name for extracted licenses.",
+          "type": "string"
+        },
+        "extractLicenses": {
+          "description": "Extract all licenses in a separate file.",
+          "type": "boolean"
+        },
+        "fileReplacements": {
+          "description": "Replaces resources with new resources.",
+          "items": {
+            "$ref": "#/definitions/FileReplacementEntry"
+          },
+          "type": "array"
+        },
+        "forkTypeChecker": {
+          "description": "Run the TypeScript type checker in a forked process.",
+          "type": "boolean"
+        },
+        "htmlInject": {
+          "$ref": "#/definitions/HtmlInjectOptions",
+          "description": "The html injection options."
+        },
+        "i18nFile": {
+          "description": "Path to the translation file.",
+          "type": "string"
+        },
+        "i18nFormat": {
+          "description": "Import format if different from `i18nFormat`.",
+          "type": "string"
+        },
+        "i18nLocale": {
+          "description": "Locale of the imported translations.",
+          "type": "string"
+        },
+        "i18nMissingTranslation": {
+          "description": "How to handle missing messages.",
+          "enum": [
+            "error",
+            "ignore",
+            "warning"
+          ],
+          "type": "string"
+        },
+        "i18nOutFile": {
+          "description": "Path to the extracted message file.",
+          "type": "string"
+        },
+        "i18nOutFormat": {
+          "description": "Export format (xlf, xlf2 or xmb).",
+          "type": "string"
+        },
+        "lazyModules": {
+          "description": "List of additional NgModule files that will be lazy loaded (lazy router modules will be discovered automatically).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "libraryTarget": {
+          "description": "Module format for bundling.",
+          "enum": [
+            "commonjs",
+            "commonjs2",
+            "umd",
+            "var"
+          ],
+          "type": "string"
+        },
+        "mainChunkName": {
+          "description": "The output chunk name for main entry.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this configuration.",
+          "type": "string"
+        },
+        "namedChunks": {
+          "description": "Use file name for lazy loaded chunks.",
+          "type": "boolean"
+        },
+        "ngswConfigPath": {
+          "description": "Path to ngsw-config.json.",
+          "type": "string"
+        },
+        "nodeModulesAsExternals": {
+          "description": "If true, node_modules packages are not included in bundle.",
+          "type": "boolean"
+        },
+        "nodeResolveFields": {
+          "description": "Custom Node.js resolution main fields.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "optimization": {
+          "description": "Defines the optimization level of the build.",
+          "type": "boolean"
+        },
+        "outputHashing": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/OutputHashingOptions"
+            },
+            {
+              "enum": [
+                "all",
+                "bundles",
+                "media",
+                "none"
+              ],
+              "type": "string"
+            }
+          ],
+          "description": "Define the output filename cache-busting hashing mode."
+        },
+        "outputPath": {
+          "description": "The output directory for build results.",
+          "type": "string"
+        },
+        "performance": {
+          "$ref": "#/definitions/PerformanceOptions",
+          "description": "Performance options."
+        },
+        "platformTarget": {
+          "description": "Tell the build system which platform environment the application is targeting.",
+          "enum": [
+            "node",
+            "web"
+          ],
+          "type": "string"
+        },
+        "polyfills": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "Polyfill entries."
+        },
+        "polyfillsChunkName": {
+          "description": "The output chunk name for polyfills.",
+          "type": "string"
+        },
+        "publicPath": {
+          "description": "The url where files will be deployed.",
+          "type": "string"
+        },
+        "referenceDll": {
+          "description": "To consume dll bundle created by the dll build.",
+          "type": "boolean"
+        },
+        "resourcesOutputPath": {
+          "description": "The path where style resources will be placed, relative to outputPath.",
+          "type": "string"
+        },
+        "root": {
+          "description": "The project root folder.",
+          "type": "string"
+        },
+        "scripts": {
+          "description": "Global script entries.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/GlobalEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "serviceWorker": {
+          "description": "Generates a service worker config for production builds.",
+          "type": "boolean"
+        },
+        "skip": {
+          "description": "If true, this project config will be skipped by the build process.",
+          "type": "boolean"
+        },
+        "sourceMap": {
+          "description": "If true, sourcemaps will be generated.",
+          "type": "boolean"
+        },
+        "sourceMapDevTool": {
+          "description": "This option controls if and how source maps are generated.",
+          "enum": [
+            "#@cheap-eval-source-map",
+            "#@cheap-module-eval-source-map",
+            "#@cheap-module-source-map",
+            "#@cheap-source-map",
+            "#@eval",
+            "#@eval-source-map",
+            "#@hidden-source-map",
+            "#@inline-source-map",
+            "#@nosources-source-map",
+            "#@source-map",
+            "#cheap-eval-source-map",
+            "#cheap-module-eval-source-map",
+            "#cheap-module-source-map",
+            "#cheap-source-map",
+            "#eval",
+            "#eval-source-map",
+            "#hidden-source-map",
+            "#inline-source-map",
+            "#nosources-source-map",
+            "#source-map",
+            "@cheap-eval-source-map",
+            "@cheap-module-eval-source-map",
+            "@cheap-module-source-map",
+            "@cheap-source-map",
+            "@eval",
+            "@eval-source-map",
+            "@hidden-source-map",
+            "@inline-source-map",
+            "@nosources-source-map",
+            "@source-map",
+            "cheap-eval-source-map",
+            "cheap-module-eval-source-map",
+            "cheap-module-source-map",
+            "cheap-source-map",
+            "eval",
+            "eval-source-map",
+            false,
+            "hidden-source-map",
+            "inline-source-map",
+            "nosources-source-map",
+            "source-map",
+            true
+          ]
+        },
+        "sourceMapDevToolFallbackModuleFilenameTemplate": {
+          "description": "A fallback used when the template string of 'sourceMapFilenameTemplate' yields duplicates.",
+          "type": "string"
+        },
+        "sourceMapDevToolModuleFilenameTemplate": {
+          "description": "Customize the names used in each source map.",
+          "type": "string"
+        },
+        "stats": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/WebpackStatsToStringOptions"
+            },
+            {
+              "enum": [
+                "errors-only",
+                false,
+                "minimal",
+                "none",
+                "normal",
+                true,
+                "verbose"
+              ]
+            }
+          ],
+          "description": "The webpack stats option - lets you precisely control what bundle information gets displayed."
+        },
+        "stylePreprocessorOptions": {
+          "$ref": "#/definitions/StylePreprocessorOptions",
+          "description": "Options to pass to style preprocessors."
+        },
+        "styles": {
+          "description": "List of global style entries.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/GlobalEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "tsConfig": {
+          "description": "The typescript configuration file to be used.",
+          "type": "string"
+        },
+        "vendorChunk": {
+          "description": "If true, requested modules started with node_modules path are chunk into [vendorChunkName].js.",
+          "type": "boolean"
+        },
+        "vendorChunkName": {
+          "description": "The output chunk name for vendor or dll chunk.",
+          "type": "string"
+        },
+        "vendors": {
+          "description": "The vendor module entries for dll bundle.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "webpackConfig": {
+          "description": "Custom webpack config file to be merged.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AppProjectConfigBase": {
+      "additionalProperties": false,
+      "properties": {
+        "aot": {
+          "description": "Build using Ahead of Time compilation.",
+          "type": "boolean"
+        },
+        "banner": {
+          "description": "Banner text to add at the top of each generated files. It can be text file name or raw text.",
+          "type": "string"
+        },
+        "baseHref": {
+          "description": "The base URL for all relative URLs on a page.",
+          "type": "string"
+        },
+        "buildOptimizer": {
+          "description": "Set true to enable build optimizer.",
+          "type": "boolean"
+        },
+        "bundleAnalyzer": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/BundleAnalyzerOptions"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Webpack Bundle analyzer options."
+        },
+        "clean": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CleanOptions"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Clean options."
+        },
+        "commonChunk": {
+          "description": "If true, chunk a separate bundle containing common code used across multiple bundles.",
+          "type": "boolean"
+        },
+        "concatenateModules": {
+          "description": "Set true to enable scope hoisting.",
+          "type": "boolean"
+        },
+        "copy": {
+          "description": "Copy options.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/AssetEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "entry": {
+          "description": "The main typescript entry file to be bundled.",
+          "type": "string"
+        },
+        "environmentVariables": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "boolean"
+                ]
+              },
+              "type": "object"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Custom environment variables to be included in bundle."
+        },
+        "externals": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExternalsObjectElement"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/ExternalsObjectElement"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The externals configuration option provides a way of excluding dependencies from the output bundle."
+        },
+        "extractCss": {
+          "description": "If true, build process will extracts css specified in styles entry as styles.css.",
+          "type": "boolean"
+        },
+        "extractLicenseOutputFilename": {
+          "description": "Output file name for extracted licenses.",
+          "type": "string"
+        },
+        "extractLicenses": {
+          "description": "Extract all licenses in a separate file.",
+          "type": "boolean"
+        },
+        "fileReplacements": {
+          "description": "Replaces resources with new resources.",
+          "items": {
+            "$ref": "#/definitions/FileReplacementEntry"
+          },
+          "type": "array"
+        },
+        "forkTypeChecker": {
+          "description": "Run the TypeScript type checker in a forked process.",
+          "type": "boolean"
+        },
+        "htmlInject": {
+          "$ref": "#/definitions/HtmlInjectOptions",
+          "description": "The html injection options."
+        },
+        "i18nFile": {
+          "description": "Path to the translation file.",
+          "type": "string"
+        },
+        "i18nFormat": {
+          "description": "Import format if different from `i18nFormat`.",
+          "type": "string"
+        },
+        "i18nLocale": {
+          "description": "Locale of the imported translations.",
+          "type": "string"
+        },
+        "i18nMissingTranslation": {
+          "description": "How to handle missing messages.",
+          "enum": [
+            "error",
+            "ignore",
+            "warning"
+          ],
+          "type": "string"
+        },
+        "i18nOutFile": {
+          "description": "Path to the extracted message file.",
+          "type": "string"
+        },
+        "i18nOutFormat": {
+          "description": "Export format (xlf, xlf2 or xmb).",
+          "type": "string"
+        },
+        "lazyModules": {
+          "description": "List of additional NgModule files that will be lazy loaded (lazy router modules will be discovered automatically).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "libraryTarget": {
+          "description": "Module format for bundling.",
+          "enum": [
+            "commonjs",
+            "commonjs2",
+            "umd",
+            "var"
+          ],
+          "type": "string"
+        },
+        "mainChunkName": {
+          "description": "The output chunk name for main entry.",
+          "type": "string"
+        },
+        "namedChunks": {
+          "description": "Use file name for lazy loaded chunks.",
+          "type": "boolean"
+        },
+        "ngswConfigPath": {
+          "description": "Path to ngsw-config.json.",
+          "type": "string"
+        },
+        "nodeModulesAsExternals": {
+          "description": "If true, node_modules packages are not included in bundle.",
+          "type": "boolean"
+        },
+        "nodeResolveFields": {
+          "description": "Custom Node.js resolution main fields.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "optimization": {
+          "description": "Defines the optimization level of the build.",
+          "type": "boolean"
+        },
+        "outputHashing": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/OutputHashingOptions"
+            },
+            {
+              "enum": [
+                "all",
+                "bundles",
+                "media",
+                "none"
+              ],
+              "type": "string"
+            }
+          ],
+          "description": "Define the output filename cache-busting hashing mode."
+        },
+        "outputPath": {
+          "description": "The output directory for build results.",
+          "type": "string"
+        },
+        "performance": {
+          "$ref": "#/definitions/PerformanceOptions",
+          "description": "Performance options."
+        },
+        "platformTarget": {
+          "description": "Tell the build system which platform environment the application is targeting.",
+          "enum": [
+            "node",
+            "web"
+          ],
+          "type": "string"
+        },
+        "polyfills": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "Polyfill entries."
+        },
+        "polyfillsChunkName": {
+          "description": "The output chunk name for polyfills.",
+          "type": "string"
+        },
+        "publicPath": {
+          "description": "The url where files will be deployed.",
+          "type": "string"
+        },
+        "referenceDll": {
+          "description": "To consume dll bundle created by the dll build.",
+          "type": "boolean"
+        },
+        "resourcesOutputPath": {
+          "description": "The path where style resources will be placed, relative to outputPath.",
+          "type": "string"
+        },
+        "scripts": {
+          "description": "Global script entries.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/GlobalEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "serviceWorker": {
+          "description": "Generates a service worker config for production builds.",
+          "type": "boolean"
+        },
+        "skip": {
+          "description": "If true, this project config will be skipped by the build process.",
+          "type": "boolean"
+        },
+        "sourceMap": {
+          "description": "If true, sourcemaps will be generated.",
+          "type": "boolean"
+        },
+        "sourceMapDevTool": {
+          "description": "This option controls if and how source maps are generated.",
+          "enum": [
+            "#@cheap-eval-source-map",
+            "#@cheap-module-eval-source-map",
+            "#@cheap-module-source-map",
+            "#@cheap-source-map",
+            "#@eval",
+            "#@eval-source-map",
+            "#@hidden-source-map",
+            "#@inline-source-map",
+            "#@nosources-source-map",
+            "#@source-map",
+            "#cheap-eval-source-map",
+            "#cheap-module-eval-source-map",
+            "#cheap-module-source-map",
+            "#cheap-source-map",
+            "#eval",
+            "#eval-source-map",
+            "#hidden-source-map",
+            "#inline-source-map",
+            "#nosources-source-map",
+            "#source-map",
+            "@cheap-eval-source-map",
+            "@cheap-module-eval-source-map",
+            "@cheap-module-source-map",
+            "@cheap-source-map",
+            "@eval",
+            "@eval-source-map",
+            "@hidden-source-map",
+            "@inline-source-map",
+            "@nosources-source-map",
+            "@source-map",
+            "cheap-eval-source-map",
+            "cheap-module-eval-source-map",
+            "cheap-module-source-map",
+            "cheap-source-map",
+            "eval",
+            "eval-source-map",
+            false,
+            "hidden-source-map",
+            "inline-source-map",
+            "nosources-source-map",
+            "source-map",
+            true
+          ]
+        },
+        "sourceMapDevToolFallbackModuleFilenameTemplate": {
+          "description": "A fallback used when the template string of 'sourceMapFilenameTemplate' yields duplicates.",
+          "type": "string"
+        },
+        "sourceMapDevToolModuleFilenameTemplate": {
+          "description": "Customize the names used in each source map.",
+          "type": "string"
+        },
+        "stats": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/WebpackStatsToStringOptions"
+            },
+            {
+              "enum": [
+                "errors-only",
+                false,
+                "minimal",
+                "none",
+                "normal",
+                true,
+                "verbose"
+              ]
+            }
+          ],
+          "description": "The webpack stats option - lets you precisely control what bundle information gets displayed."
+        },
+        "stylePreprocessorOptions": {
+          "$ref": "#/definitions/StylePreprocessorOptions",
+          "description": "Options to pass to style preprocessors."
+        },
+        "styles": {
+          "description": "List of global style entries.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/GlobalEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "tsConfig": {
+          "description": "The typescript configuration file to be used.",
+          "type": "string"
+        },
+        "vendorChunk": {
+          "description": "If true, requested modules started with node_modules path are chunk into [vendorChunkName].js.",
+          "type": "boolean"
+        },
+        "vendorChunkName": {
+          "description": "The output chunk name for vendor or dll chunk.",
+          "type": "string"
+        },
+        "vendors": {
+          "description": "The vendor module entries for dll bundle.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "webpackConfig": {
+          "description": "Custom webpack config file to be merged.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AssetEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "exclude": {
+          "description": "The ignore list.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "from": {
+          "description": "The source file, it can be absolute or relative path or glob pattern.",
+          "type": "string"
+        },
+        "to": {
+          "description": "The output file name.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "BeforeBuildCleanOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "cleanCache": {
+          "description": "If true, delete cache directories before build.",
+          "type": "boolean"
+        },
+        "cleanOutDir": {
+          "description": "If true, delete output directory before build.",
+          "type": "boolean"
+        },
+        "excludes": {
+          "description": "Path array to exclude from deleting.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "paths": {
+          "description": "Paths to be deleted.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "BundleAnalyzerOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "generateStatsFile": {
+          "description": "If `true`, Webpack Stats JSON file will be generated in bundles output directory.",
+          "type": "boolean"
+        },
+        "openAnalyzer": {
+          "description": "If true, automatically open report in default browser.",
+          "type": "boolean"
+        },
+        "reportFilename": {
+          "description": "Path to bundle report file that will be generated in `static` mode.",
+          "type": "string"
+        },
+        "statsFilename": {
+          "description": "Name of Webpack Stats JSON file that will be generated if `generateStatsFile` is `true`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CleanOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "afterEmit": {
+          "$ref": "#/definitions/AfterEmitCleanOptions",
+          "description": "After emit clean option."
+        },
+        "allowOutsideOutDir": {
+          "description": "Allows cleaning outside of output directory.",
+          "type": "boolean"
+        },
+        "allowOutsideWorkspaceRoot": {
+          "description": "Allows cleaning outside of workspace root.",
+          "type": "boolean"
+        },
+        "beforeBuild": {
+          "$ref": "#/definitions/BeforeBuildCleanOptions",
+          "description": "Before build clean option."
+        }
+      },
+      "type": "object"
+    },
+    "ExternalsObjectElement": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "amd": {
+                "type": "string"
+              },
+              "commonjs": {
+                "type": "string"
+              },
+              "root": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "type": "object"
+    },
+    "FileReplacementEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "replace": {
+          "type": "string"
+        },
+        "with": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GlobalEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "bundleName": {
+          "description": "The bundle name for this extra entry point.",
+          "type": "string"
+        },
+        "input": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The file to include."
+        },
+        "lazy": {
+          "description": "If the bundle will be lazy loaded.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "HtmlInjectOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "baseHrefOut": {
+          "type": "string"
+        },
+        "customAttributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "customLinkAttributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "customResourceHintAttributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "customScriptAttributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "dlls": {
+          "type": "boolean"
+        },
+        "index": {
+          "type": "string"
+        },
+        "indexOut": {
+          "type": "string"
+        },
+        "minify": {
+          "type": "boolean"
+        },
+        "prefetches": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "preloads": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resourceHints": {
+          "type": "boolean"
+        },
+        "resourceHintsOut": {
+          "type": "string"
+        },
+        "runtimeChunkInline": {
+          "type": "boolean"
+        },
+        "runtimeInlineOut": {
+          "type": "string"
+        },
+        "scriptsOut": {
+          "type": "string"
+        },
+        "stylesOut": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LibBundleOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "entry": {
+          "description": "The entry file to be bundled.",
+          "type": "string"
+        },
+        "entryRoot": {
+          "description": "Entry root directory resolution.",
+          "enum": [
+            "prevBundleOutput",
+            "root",
+            "tsTranspilationOutput"
+          ],
+          "type": "string"
+        },
+        "externals": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExternalsObjectElement"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/ExternalsObjectElement"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The externals configuration option provides a way of excluding dependencies from the output bundle."
+        },
+        "includeDefaultAngularAndRxJsGlobals": {
+          "description": "If true, predefined Angular and rxjs globals are added.",
+          "type": "boolean"
+        },
+        "libraryTarget": {
+          "description": "Bundle module format.",
+          "enum": [
+            "cjs",
+            "esm",
+            "umd"
+          ],
+          "type": "string"
+        },
+        "minify": {
+          "description": "If true, minify file will be generated.",
+          "type": "boolean"
+        },
+        "nodeModulesAsExternals": {
+          "description": "If true, node_modules packages are not included in bundle.",
+          "type": "boolean"
+        },
+        "outputFilePath": {
+          "description": "Custom bundle output file path.",
+          "type": "string"
+        },
+        "tsConfig": {
+          "description": "The typescript configuration file to be used.",
+          "type": "string"
+        },
+        "tsTranspilationIndex": {
+          "description": "Array index for entry root tsTranspilationResult.",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "LibEnvOverridesOptions": {
+      "additionalProperties": {
+        "$ref": "#/definitions/LibProjectConfigBase"
+      },
+      "type": "object"
+    },
+    "LibProjectConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "description": "Link to schema.",
+          "type": "string"
+        },
+        "banner": {
+          "description": "Banner text to add at the top of each generated files. It can be text file name or raw text.",
+          "type": "string"
+        },
+        "bundles": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/LibBundleOptions"
+              },
+              "type": "array"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Bundle target options."
+        },
+        "clean": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CleanOptions"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Clean options."
+        },
+        "copy": {
+          "description": "Copy options.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/AssetEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "envOverrides": {
+          "$ref": "#/definitions/LibEnvOverridesOptions",
+          "description": "To override properties based on build environment."
+        },
+        "extends": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The name of build-in configuration preset, or path(s) to other configuration files which are extended by this configuration."
+        },
+        "externals": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExternalsObjectElement"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/ExternalsObjectElement"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The externals configuration option provides a way of excluding dependencies from the output bundle."
+        },
+        "includeDefaultAngularAndRxJsGlobals": {
+          "description": "If true, predefined Angular and rxjs globals are added.",
+          "type": "boolean"
+        },
+        "libraryName": {
+          "description": "Represents your umd module id.",
+          "type": "string"
+        },
+        "main": {
+          "description": "The main entry point file for package.json.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this configuration.",
+          "type": "string"
+        },
+        "nodeModulesAsExternals": {
+          "description": "If true, node_modules packages are not included in bundle.",
+          "type": "boolean"
+        },
+        "outputPath": {
+          "description": "The output directory for build results.",
+          "type": "string"
+        },
+        "packageJsonCopy": {
+          "description": "Copy package.json file to output path.",
+          "type": "boolean"
+        },
+        "packageJsonOutDir": {
+          "description": "The output root directory for package.json file.",
+          "type": "string"
+        },
+        "platformTarget": {
+          "description": "Tell the build system which platform environment the application is targeting.",
+          "enum": [
+            "node",
+            "web"
+          ],
+          "type": "string"
+        },
+        "replaceVersionPlaceholder": {
+          "description": "If true, replaces version placeholder with package version.",
+          "type": "boolean"
+        },
+        "root": {
+          "description": "The project root folder.",
+          "type": "string"
+        },
+        "skip": {
+          "description": "If true, this project config will be skipped by the build process.",
+          "type": "boolean"
+        },
+        "sourceMap": {
+          "description": "If true, sourcemaps will be generated.",
+          "type": "boolean"
+        },
+        "stylePreprocessorOptions": {
+          "$ref": "#/definitions/StylePreprocessorOptions",
+          "description": "Options to pass to style preprocessors."
+        },
+        "styles": {
+          "description": "List of global style entries.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/GlobalEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "tsConfig": {
+          "description": "The typescript configuration file to be used.",
+          "type": "string"
+        },
+        "tsTranspilations": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/TsTranspilationOptions"
+              },
+              "type": "array"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Typescript transpilation options."
+        }
+      },
+      "type": "object"
+    },
+    "LibProjectConfigBase": {
+      "additionalProperties": false,
+      "properties": {
+        "banner": {
+          "description": "Banner text to add at the top of each generated files. It can be text file name or raw text.",
+          "type": "string"
+        },
+        "bundles": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/LibBundleOptions"
+              },
+              "type": "array"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Bundle target options."
+        },
+        "clean": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CleanOptions"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Clean options."
+        },
+        "copy": {
+          "description": "Copy options.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/AssetEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "externals": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExternalsObjectElement"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/ExternalsObjectElement"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The externals configuration option provides a way of excluding dependencies from the output bundle."
+        },
+        "includeDefaultAngularAndRxJsGlobals": {
+          "description": "If true, predefined Angular and rxjs globals are added.",
+          "type": "boolean"
+        },
+        "libraryName": {
+          "description": "Represents your umd module id.",
+          "type": "string"
+        },
+        "main": {
+          "description": "The main entry point file for package.json.",
+          "type": "string"
+        },
+        "nodeModulesAsExternals": {
+          "description": "If true, node_modules packages are not included in bundle.",
+          "type": "boolean"
+        },
+        "outputPath": {
+          "description": "The output directory for build results.",
+          "type": "string"
+        },
+        "packageJsonCopy": {
+          "description": "Copy package.json file to output path.",
+          "type": "boolean"
+        },
+        "packageJsonOutDir": {
+          "description": "The output root directory for package.json file.",
+          "type": "string"
+        },
+        "platformTarget": {
+          "description": "Tell the build system which platform environment the application is targeting.",
+          "enum": [
+            "node",
+            "web"
+          ],
+          "type": "string"
+        },
+        "replaceVersionPlaceholder": {
+          "description": "If true, replaces version placeholder with package version.",
+          "type": "boolean"
+        },
+        "skip": {
+          "description": "If true, this project config will be skipped by the build process.",
+          "type": "boolean"
+        },
+        "sourceMap": {
+          "description": "If true, sourcemaps will be generated.",
+          "type": "boolean"
+        },
+        "stylePreprocessorOptions": {
+          "$ref": "#/definitions/StylePreprocessorOptions",
+          "description": "Options to pass to style preprocessors."
+        },
+        "styles": {
+          "description": "List of global style entries.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/GlobalEntry"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "tsConfig": {
+          "description": "The typescript configuration file to be used.",
+          "type": "string"
+        },
+        "tsTranspilations": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/definitions/TsTranspilationOptions"
+              },
+              "type": "array"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "description": "Typescript transpilation options."
+        }
+      },
+      "type": "object"
+    },
+    "OutputHashingOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "bundles": {
+          "type": "boolean"
+        },
+        "chunks": {
+          "type": "boolean"
+        },
+        "extractedAssets": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "PerformanceOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "hints": {
+          "enum": [
+            "error",
+            false,
+            true,
+            "warning"
+          ]
+        },
+        "maxAssetSize": {
+          "type": "number"
+        },
+        "maxEntrypointSize": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "StylePreprocessorOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "includePaths": {
+          "description": "An array of paths that LibSass can look in to attempt to resolve your @import declarations.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "TsTranspilationOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "declaration": {
+          "description": "Override declaration option for this transpilation.",
+          "type": "boolean"
+        },
+        "enableResourceInlining": {
+          "description": "If true, templateUrl and styleUrls resources are inlined.",
+          "type": "boolean"
+        },
+        "outDir": {
+          "description": "Custom output directory for this transpilation.",
+          "type": "string"
+        },
+        "target": {
+          "description": "Override script target for this transpilation.",
+          "enum": [
+            "es2015",
+            "es2016",
+            "es2017",
+            "es2018",
+            "es5",
+            "esnext"
+          ],
+          "type": "string"
+        },
+        "tsConfig": {
+          "description": "Typescript configuration file for this transpilation.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "WebpackStatsToStringOptions": {
+      "properties": {
+        "assets": {
+          "type": "boolean"
+        },
+        "assetsSort": {
+          "type": "string"
+        },
+        "cached": {
+          "type": "boolean"
+        },
+        "cachedAssets": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "boolean"
+        },
+        "chunkModules": {
+          "type": "boolean"
+        },
+        "chunkOrigins": {
+          "type": "boolean"
+        },
+        "chunks": {
+          "type": "boolean"
+        },
+        "chunksSort": {
+          "type": "string"
+        },
+        "colors": {
+          "type": "boolean"
+        },
+        "context": {
+          "type": "string"
+        },
+        "depth": {
+          "type": "boolean"
+        },
+        "entrypoints": {
+          "type": "boolean"
+        },
+        "env": {
+          "type": "boolean"
+        },
+        "errorDetails": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "boolean"
+        },
+        "exclude": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "excludeAssets": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "excludeModules": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "hash": {
+          "type": "boolean"
+        },
+        "maxModules": {
+          "type": "number"
+        },
+        "moduleTrace": {
+          "type": "boolean"
+        },
+        "modules": {
+          "type": "boolean"
+        },
+        "modulesSort": {
+          "type": "string"
+        },
+        "performance": {
+          "type": "boolean"
+        },
+        "providedExports": {
+          "type": "boolean"
+        },
+        "publicPath": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "boolean"
+        },
+        "timings": {
+          "type": "boolean"
+        },
+        "usedExports": {
+          "type": "boolean"
+        },
+        "version": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "boolean"
+        },
+        "warningsFilter": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "$schema": {
+      "description": "Link to schema.",
+      "type": "string"
+    },
+    "apps": {
+      "description": "The application project configurations.",
+      "items": {
+        "$ref": "#/definitions/AppProjectConfig"
+      },
+      "type": "array"
+    },
+    "libs": {
+      "description": "The library project configurations.",
+      "items": {
+        "$ref": "#/definitions/LibProjectConfig"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}
