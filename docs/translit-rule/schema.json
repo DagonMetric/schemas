@@ -13,6 +13,21 @@
     }
   ],
   "definitions": {
+    "TplSeqDef": {
+      "additionalProperties": false,
+      "description": "Transliterate rule item.\nRule item level template loop/sequence variable definition.",
+      "properties": {
+        "k": {
+          "description": "Loop/sequence variable key.",
+          "type": "string"
+        },
+        "v": {
+          "description": "Loop/sequence value definition.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "TranslitRule": {
       "additionalProperties": false,
       "properties": {
@@ -70,18 +85,8 @@
           "type": "boolean"
         },
         "tplSeqDef": {
-          "description": "Rule item level template loop/sequence variable definition.",
-          "properties": {
-            "k": {
-              "description": "Loop/sequence variable key.",
-              "type": "string"
-            },
-            "v": {
-              "description": "Loop/sequence value definition.",
-              "type": "string"
-            }
-          },
-          "type": "object"
+          "$ref": "#/definitions/TplSeqDef",
+          "description": "Rule item level template loop/sequence variable definition."
         },
         "tplVar": {
           "additionalProperties": {

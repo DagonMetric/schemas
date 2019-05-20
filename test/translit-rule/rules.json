@@ -6,7 +6,7 @@
       "tplVar": {
         "$x": ""
       },
-      "tplSeqVar": {
+      "tplSeqDef": {
         "$y": ""
       },
       "rules": [
@@ -22,8 +22,9 @@
           "tplVar": {
             "$x": "$x"
           },
-          "tplSeqVar": {
-            "$y": "$y"
+          "tplSeqDef": {
+            "k": "#y",
+            "v": "$y"
           },
           "when": {
             "\u1000": 1
