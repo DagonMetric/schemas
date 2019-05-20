@@ -1,5 +1,5 @@
 {
-  "$schema": "./../../docs/translit-rules/schema.json#",
+  "$schema": "./../../docs/translit-rule/schema.json#",
   "phases": [
     {
       "description": "Phase 1",
@@ -24,6 +24,9 @@
           },
           "tplSeqVar": {
             "$y": "$y"
+          },
+          "when": {
+            "\u1000": 1
           }
         }
       ]

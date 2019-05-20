@@ -82,6 +82,16 @@
           },
           "description": "Rule item level template variables definition.",
           "type": "object"
+        },
+        "when": {
+          "additionalProperties": {
+            "type": [
+              "string",
+              "boolean"
+            ]
+          },
+          "description": "Apply the rule only if 'when' options and user options are met.",
+          "type": "object"
         }
       },
       "type": "object"
