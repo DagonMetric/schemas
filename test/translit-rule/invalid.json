@@ -20,6 +20,7 @@
           "minLength": 0,
           "quickTests": ["\u1000", ["\u1000"], ["\u1000",-1]],
           "tpl": null,
+          "tplSeqName": "s",
           "when": {
             "Option1": {},
             "Option2": 1

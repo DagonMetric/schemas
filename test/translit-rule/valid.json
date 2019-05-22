@@ -18,6 +18,7 @@
           "minLength": 1,
           "quickTests": [["\u1000",1]],
           "tpl": true,
+          "tplSeqName": "#s",
           "when": {
             "Option1": true
           }
