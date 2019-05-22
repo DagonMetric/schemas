@@ -1,0 +1,28 @@
+{
+  "$schema": "./../../docs/translit-rule/schema.json#",
+  "phases": [
+    {
+      "description": "Phase 1",
+      "tplVar": {
+        "#x": "\u1000\u1001"
+      },
+      "tplSeq": {
+        "#s": [["\u1000", "\u1010", 1], ["\u1010", "\u1070",2]]
+      },
+      "rules": [
+        {
+          "from": "([\u1000])",
+          "to": "$1",
+          "description": "Rule 1",
+          "matchOnStart": true,
+          "minLength": 1,
+          "quickTests": [["\u1000",1]],
+          "tpl": true,
+          "when": {
+            "Option1": true
+          }
+        }
+      ]
+    }
+  ]
+}
