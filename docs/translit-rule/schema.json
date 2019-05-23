@@ -87,8 +87,7 @@
               {
                 "type": "string",
                 "description": "Character for quick test checking.",
-                "minLength": 1,
-                "maxLength": 1
+                "minLength": 1
               },
               {
                 "type": "integer",
