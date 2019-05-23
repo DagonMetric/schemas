@@ -10,6 +10,12 @@
         "$ref": "#/definitions/TranslitRulePhase"
       },
       "type": "array"
+    },
+    {
+      "items": {
+        "$ref": "#/definitions/TranslitRuleItem"
+      },
+      "type": "array"
     }
   ],
   "definitions": {
@@ -27,6 +33,17 @@
           },
           "minItems": 1,
           "type": "array"
+        },
+        "tplVar": {
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Global template variables definition.",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^#[A-Za-z][A-Za-z0-9_]*$"
+          }
         }
       },
       "type": "object"
