@@ -101,6 +101,10 @@
           "type": "array",
           "minItems": 1
         },
+        "revisit": {
+          "description": "Set true to come back to match start after replacing.",
+          "type": "boolean"
+        },
         "to": {
           "description": "The value to replace the search value with.",
           "type": "string"
