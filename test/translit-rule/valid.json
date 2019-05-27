@@ -22,7 +22,21 @@
           "tplSeqName": "#s",
           "when": {
             "Option1": true
-          }
+          },
+          "postRules": [
+            {
+              "from": "(\u1000)",
+              "to": "$1",
+              "description": "Post rule 1",
+              "start": 0,
+              "quickTests": [["\u1000",1]],
+              "tpl": true,
+              "tplSeqName": "#s2",
+              "when": {
+                "Option1": true
+              }
+            }
+          ]
         }
       ]
     }

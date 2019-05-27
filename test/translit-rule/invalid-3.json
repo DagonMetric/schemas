@@ -2,6 +2,16 @@
   "$schema": "./../../docs/translit-rule/schema.json#",
   "phases": [
     {
+      "description": 1
+    },
+    {
+      "rules": [
+        {
+          "to": 5
+        }
+      ]
+    },
+    {
       "description": 1,
       "tplVar": {
         "x": ""
@@ -25,7 +35,20 @@
           "when": {
             "Option1": {},
             "Option2": 1
-          }
+          },
+          "postRules": [
+            {
+              "from": "",
+              "description": 2,
+              "start": -1,
+              "quickTests": ["\u1000",1],
+              "tpl": "true",
+              "tplSeqName": "s2",
+              "when": {
+                "Option1": 5
+              }
+            }
+          ]
         }
       ]
     }
