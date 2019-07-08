@@ -21,9 +21,14 @@
   "definitions": {
     "TranslitRule": {
       "additionalProperties": false,
+      "description": "Transliterate rule.",
       "properties": {
         "$schema": {
           "description": "Link to schema file.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description for the rule.",
           "type": "string"
         },
         "phases": {
@@ -44,6 +49,10 @@
           "propertyNames": {
             "pattern": "^#[A-Za-z][A-Za-z0-9_]*$"
           }
+        },
+        "version": {
+          "description": "The version for the rule.",
+          "type": "string"
         }
       },
       "type": "object",
@@ -60,16 +69,16 @@
           "type": "string"
         },
         "from": {
-          "description": "Search regular expression pattern for input string.",
+          "description": "Regular expression pattern for input string searching.",
           "minLength": 1,
           "type": "string"
         },
         "matchOnStart": {
-          "description": "If true, only match and replace on start of string.",
+          "description": "If true, only match and replace on the start of string.",
           "type": "boolean"
         },
         "minLength": {
-          "description": "Minimum input string length for quick test checking.",
+          "description": "Minimum input string length for quick checking.",
           "minimum": 1,
           "type": "integer"
         },
@@ -82,7 +91,7 @@
           "type": "array"
         },
         "quickTests": {
-          "description": "Array of [char, index] for quick test checking.",
+          "description": "Array of [char, index] for quick checking.",
           "items": {
             "additionalItems": {
               "anyOf": [
@@ -113,20 +122,11 @@
           "minItems": 1
         },
         "revisit": {
-          "description": "Set true to come back to match start after replacing.",
+          "description": "Set true to revisit to the matched start after replacing.",
           "type": "boolean"
         },
         "to": {
-          "description": "The value to replace the search value with.",
-          "type": "string"
-        },
-        "tpl": {
-          "description": "Set true for template variables replacement.",
-          "type": "boolean"
-        },
-        "tplSeqName": {
-          "description": "Set the variable name from phase level 'tplSeq' for template sequence/loop processing.",
-          "pattern": "^#[A-Za-z][A-Za-z0-9_]*$",
+          "description": "The value to replace the matched string.",
           "type": "string"
         },
         "when": {
@@ -202,7 +202,7 @@
             "type": "array",
             "minItems": 1
           },
-          "description": "Phase level template loop/sequence variables definition.",
+          "description": "Template loop/sequence variables definition.",
           "type": "object",
           "propertyNames": {
             "pattern": "^#[A-Za-z][A-Za-z0-9_]*$"
@@ -234,12 +234,16 @@
           "type": "string"
         },
         "from": {
-          "description": "Search regular expression pattern for input string.",
+          "description": "Regular expression pattern for input string searching.",
           "minLength": 1,
           "type": "string"
         },
+        "orGroup": {
+          "description": "Group code for grouping 'OR' items.",
+          "type": "string"
+        },
         "quickTests": {
-          "description": "Array of [char, index] for quick test checking.",
+          "description": "Array of [char, index] for quick checking.",
           "items": {
             "additionalItems": {
               "anyOf": [
@@ -270,21 +274,12 @@
           "minItems": 1
         },
         "start": {
-          "description": "Start index for search.",
+          "description": "Start index for searching.",
           "minimum": 0,
           "type": "integer"
         },
         "to": {
-          "description": "The value to replace the search value with.",
-          "type": "string"
-        },
-        "tpl": {
-          "description": "Set true for template variables replacement.",
-          "type": "boolean"
-        },
-        "tplSeqName": {
-          "description": "Set the variable name from phase level 'tplSeq' for template sequence/loop processing.",
-          "pattern": "^#[A-Za-z][A-Za-z0-9_]*$",
+          "description": "The value to replace the matched string.",
           "type": "string"
         },
         "when": {
