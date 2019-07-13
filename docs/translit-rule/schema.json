@@ -90,6 +90,10 @@
           "minItems": 1,
           "type": "array"
         },
+        "postRulesRef": {
+          "description": "The name defined in `postRulesDef`.",
+          "type": "string"
+        },
         "quickTests": {
           "description": "Array of [char, index] for quick checking.",
           "items": {
@@ -152,6 +156,16 @@
         "description": {
           "description": "Description for the rule phase.",
           "type": "string"
+        },
+        "postRulesDef": {
+          "additionalProperties": {
+            "items": {
+              "$ref": "#/definitions/TranslitSubRuleItem"
+            },
+            "type": "array"
+          },
+          "description": "Post rules definitions to be used for `postRulesRef`.",
+          "type": "object"
         },
         "rules": {
           "description": "Array of Transliterate rule items.",
