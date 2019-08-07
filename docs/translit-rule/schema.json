@@ -73,6 +73,10 @@
           "minLength": 1,
           "type": "string"
         },
+        "left": {
+          "description": "Regular expression pattern for checking previous left part string.",
+          "type": "string"
+        },
         "matchOnStart": {
           "description": "If true, only match and replace on the start of string.",
           "type": "boolean"
@@ -124,10 +128,6 @@
           },
           "type": "array",
           "minItems": 1
-        },
-        "revisit": {
-          "description": "Set true to revisit to the matched start after replacing.",
-          "type": "boolean"
         },
         "to": {
           "description": "The value to replace the matched string.",
