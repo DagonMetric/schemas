@@ -18,8 +18,19 @@
       },
       "tplSeq": {
         "s1": [],
-        "#s2": [["\u1000","\u1000"]],
-        "#s3": [["\u1000","\u1001",0]]
+        "#s2": [
+          [
+            "\u1000",
+            "\u1000"
+          ]
+        ],
+        "#s3": [
+          [
+            "\u1000",
+            "\u1001",
+            0
+          ]
+        ]
       },
       "rules": [
         {
@@ -28,10 +39,9 @@
           "description": {},
           "matchOnStart": 1,
           "minLength": 0,
-          "revisit": 0,
-          "quickTests": ["\u1000", ["\u1000"], ["\u1000",-1]],
-          "tpl": null,
-          "tplSeqName": "s",
+          "quickTest": {
+            "\u1000": true
+          },
           "when": {
             "Option1": {},
             "Option2": 1
@@ -41,9 +51,6 @@
               "from": "",
               "description": 2,
               "start": -1,
-              "quickTests": ["\u1000",1],
-              "tpl": "true",
-              "tplSeqName": "s2",
               "when": {
                 "Option1": 5
               }

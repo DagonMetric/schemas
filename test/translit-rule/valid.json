@@ -7,21 +7,50 @@
         "#x": "\u1000\u1001"
       },
       "tplSeq": {
-        "#s": [["\u1000", "\u1010", 1], ["\u1010", "\u1070",2]]
+        "#s": [
+          [
+            "\u1000",
+            "\u1010",
+            1
+          ],
+          [
+            "\u1010",
+            "\u1070",
+            2
+          ]
+        ]
+      },
+      "postRulesDef": {
+        "prs1": [
+          {
+            "from": "(\u1000)",
+            "to": "$1",
+            "description": "Post rule 1",
+            "start": 0,
+            "when": {
+              "Option1": true
+            }
+          }
+        ]
       },
       "rules": [
         {
           "from": "([\u1000])",
           "to": "$1",
+          "left": "\u1000",
           "description": "Rule 1",
           "matchOnStart": true,
-          "revisit": true,
           "minLength": 1,
-          "quickTests": [["\u1000",1], ["#s", 2]],
-          "tpl": true,
-          "tplSeqName": "#s",
+          "quickTest": {
+            "\u1000": 1,
+            "#s": 2
+          },
           "when": {
             "Option1": true
+          },
+          "postRulesRef": "prs1",
+          "postRulesStart": {
+            "\u1000": 1
           },
           "postRules": [
             {
@@ -29,9 +58,6 @@
               "to": "$1",
               "description": "Post rule 1",
               "start": 0,
-              "quickTests": [["\u1000",1]],
-              "tpl": true,
-              "tplSeqName": "#s2",
               "when": {
                 "Option1": true
               }

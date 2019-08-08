@@ -98,36 +98,19 @@
           "description": "The name defined in `postRulesDef`.",
           "type": "string"
         },
-        "quickTests": {
-          "description": "Array of [char, index] for quick checking.",
-          "items": {
-            "additionalItems": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "number"
-                }
-              ]
-            },
-            "items": [
-              {
-                "type": "string",
-                "description": "Character for quick test checking.",
-                "minLength": 1
-              },
-              {
-                "type": "integer",
-                "description": "Character index position for quick test checking.",
-                "minimum": 0
-              }
-            ],
-            "minItems": 2,
-            "type": "array"
+        "postRulesStart": {
+          "additionalProperties": {
+            "type": "number"
           },
-          "type": "array",
-          "minItems": 1
+          "description": "The key value pair of `orGroup` and `start` index for `postRules` items.",
+          "type": "object"
+        },
+        "quickTest": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "description": "The key value pairs of character string and its index for quick checking.",
+          "type": "object"
         },
         "to": {
           "description": "The value to replace the matched string.",
@@ -255,37 +238,6 @@
         "orGroup": {
           "description": "Group code for grouping 'OR' items.",
           "type": "string"
-        },
-        "quickTests": {
-          "description": "Array of [char, index] for quick checking.",
-          "items": {
-            "additionalItems": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "number"
-                }
-              ]
-            },
-            "items": [
-              {
-                "type": "string",
-                "description": "Character for quick test checking.",
-                "minLength": 1
-              },
-              {
-                "type": "integer",
-                "description": "Character index position for quick test checking.",
-                "minimum": 0
-              }
-            ],
-            "minItems": 2,
-            "type": "array"
-          },
-          "type": "array",
-          "minItems": 1
         },
         "start": {
           "description": "Start index for searching.",
