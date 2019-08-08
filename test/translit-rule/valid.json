@@ -41,10 +41,7 @@
           "description": "Rule 1",
           "matchOnStart": true,
           "minLength": 1,
-          "quickTest": {
-            "\u1000": 1,
-            "#s": 2
-          },
+          "quickTests": [["\u1000", 1], ["#s", 2]],
           "when": {
             "Option1": true
           },

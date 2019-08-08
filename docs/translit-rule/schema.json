@@ -105,12 +105,31 @@
           "description": "The key value pair of `orGroup` and `start` index for `postRules` items.",
           "type": "object"
         },
-        "quickTest": {
-          "additionalProperties": {
-            "type": "number"
+        "quickTests": {
+          "description": "Array of [char, index] for quick checking.",
+          "items": {
+            "additionalItems": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "items": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "minItems": 2,
+            "type": "array"
           },
-          "description": "The key value pairs of character string and its index for quick checking.",
-          "type": "object"
+          "type": "array"
         },
         "to": {
           "description": "The value to replace the matched string.",

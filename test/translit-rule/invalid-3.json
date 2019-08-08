@@ -39,9 +39,12 @@
           "description": {},
           "matchOnStart": 1,
           "minLength": 0,
-          "quickTest": {
-            "\u1000": true
-          },
+          "quickTests": [
+            [
+              "\u1000",
+              true
+            ]
+          ],
           "when": {
             "Option1": {},
             "Option2": 1
