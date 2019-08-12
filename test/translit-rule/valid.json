@@ -1,8 +1,16 @@
 {
   "$schema": "./../../docs/translit-rule/schema.json#",
+  "description": "Valid test",
+  "version": "10.2.0",
+  "tplVar": {
+    "#c": "\u10000-\u1021"
+  },
   "phases": [
     {
       "description": "Phase 1",
+      "when": {
+        "option1": true
+      },
       "tplVar": {
         "#x": "\u1000\u1001"
       },
@@ -10,7 +18,7 @@
         "#s": [
           [
             "\u1000",
-            "\u1010",
+            "",
             1
           ],
           [
@@ -26,9 +34,10 @@
             "from": "(\u1000)",
             "to": "$1",
             "description": "Post rule 1",
-            "start": 0,
+            "start": -1,
+            "orGroup": "a",
             "when": {
-              "Option1": true
+              "option1": true
             }
           }
         ]
@@ -43,7 +52,7 @@
           "minLength": 1,
           "quickTests": [["\u1000", 1], ["#s", 2]],
           "when": {
-            "Option1": true
+            "option1": true
           },
           "postRulesRef": "prs1",
           "postRulesStart": {
@@ -54,9 +63,10 @@
               "from": "(\u1000)",
               "to": "$1",
               "description": "Post rule 1",
-              "start": 0,
+              "start": -1,
+              "orGroup": "a",
               "when": {
-                "Option1": true
+                "option1": true
               }
             }
           ]
