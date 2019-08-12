@@ -19,6 +19,17 @@
     }
   ],
   "definitions": {
+    "TplVar": {
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Template variables definition.",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^#[A-Za-z][A-Za-z0-9_]*$"
+      }
+    },
     "TranslitRule": {
       "additionalProperties": false,
       "description": "Transliterate rule.",
@@ -40,15 +51,8 @@
           "type": "array"
         },
         "tplVar": {
-          "additionalProperties": {
-            "type": "string",
-            "minLength": 1
-          },
-          "description": "Global template variables definition.",
-          "type": "object",
-          "propertyNames": {
-            "pattern": "^#[A-Za-z][A-Za-z0-9_]*$"
-          }
+          "$ref": "#/definitions/TplVar",
+          "description": "Global template variables definition."
         },
         "version": {
           "description": "The version for the rule.",
@@ -120,10 +124,14 @@
             },
             "items": [
               {
-                "type": "string"
+                "type": "string",
+                "description": "Character for quick test checking.",
+                "minLength": 1
               },
               {
-                "type": "number"
+                "type": "integer",
+                "description": "Index of the character for quick test checking.",
+                "minimum": 0
               }
             ],
             "minItems": 2,
@@ -136,14 +144,8 @@
           "type": "string"
         },
         "when": {
-          "additionalProperties": {
-            "type": [
-              "string",
-              "boolean"
-            ]
-          },
-          "description": "Apply the rule only if 'when' options and user options are met.",
-          "type": "object"
+          "$ref": "#/definitions/WhenOptions",
+          "description": "Apply the rule only if 'when' options and user options are met."
         }
       },
       "type": "object",
@@ -202,9 +204,7 @@
                 },
                 {
                   "type": "string",
-                  "description": "'to' start character for sequence loop.",
-                  "minLength": 1,
-                  "maxLength": 1
+                  "description": "'to' start character for sequence loop."
                 },
                 {
                   "type": "integer",
@@ -225,15 +225,12 @@
           }
         },
         "tplVar": {
-          "additionalProperties": {
-            "type": "string",
-            "minLength": 1
-          },
-          "description": "Phase level template variables definition.",
-          "type": "object",
-          "propertyNames": {
-            "pattern": "^#[A-Za-z][A-Za-z0-9_]*$"
-          }
+          "$ref": "#/definitions/TplVar",
+          "description": "Phase level template variables definition."
+        },
+        "when": {
+          "$ref": "#/definitions/WhenOptions",
+          "description": "Apply the phase only if 'when' options and user options are met."
         }
       },
       "type": "object",
@@ -260,7 +257,7 @@
         },
         "start": {
           "description": "Start index for searching.",
-          "minimum": 0,
+          "minimum": -1,
           "type": "integer"
         },
         "to": {
@@ -268,14 +265,8 @@
           "type": "string"
         },
         "when": {
-          "additionalProperties": {
-            "type": [
-              "string",
-              "boolean"
-            ]
-          },
-          "description": "Apply the rule only if 'when' options and user options are met.",
-          "type": "object"
+          "$ref": "#/definitions/WhenOptions",
+          "description": "Apply the rule only if 'when' options and user options are met."
         }
       },
       "type": "object",
@@ -283,6 +274,16 @@
         "from",
         "to"
       ]
+    },
+    "WhenOptions": {
+      "additionalProperties": {
+        "type": [
+          "string",
+          "boolean"
+        ]
+      },
+      "description": "The 'when' options to apply only if it equals with user input options.",
+      "type": "object"
     }
   }
 }
