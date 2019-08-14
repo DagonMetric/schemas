@@ -77,13 +77,13 @@
           "minLength": 1,
           "type": "string"
         },
+        "hasLeft": {
+          "description": "If true, only match and replace when has previous replaced left part string. If falase, only start of string.",
+          "type": "boolean"
+        },
         "left": {
           "description": "Regular expression pattern for checking previous left part string.",
           "type": "string"
-        },
-        "matchOnStart": {
-          "description": "If true, only match and replace on the start of string.",
-          "type": "boolean"
         },
         "minLength": {
           "description": "Minimum input string length for quick checking.",
@@ -110,7 +110,7 @@
           "type": "object"
         },
         "quickTests": {
-          "description": "Array of [char, index] for quick checking.",
+          "description": "Array of input string [char, index] for quick checking.",
           "items": {
             "additionalItems": {
               "anyOf": [
@@ -138,6 +138,10 @@
             "type": "array"
           },
           "type": "array"
+        },
+        "revisit": {
+          "description": "Set true for re-checking with other rule items.",
+          "type": "boolean"
         },
         "to": {
           "description": "The value to replace the matched string.",

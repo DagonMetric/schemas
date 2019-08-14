@@ -46,9 +46,9 @@
         {
           "from": "([\u1000])",
           "to": "$1",
+          "hasLeft": true,
           "left": "\u1000",
           "description": "Rule 1",
-          "matchOnStart": true,
           "minLength": 1,
           "quickTests": [["\u1000", 1], ["#s", 2]],
           "when": {
