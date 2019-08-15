@@ -50,6 +50,7 @@
           "left": "\u1000",
           "description": "Rule 1",
           "minLength": 1,
+          "revisit": 1,
           "quickTests": [["\u1000", 1], ["#s", 2]],
           "when": {
             "option1": true

@@ -41,7 +41,7 @@
           "left": 1,
           "postRulesRef": true,
           "postRulesStart": 5,
-          "revisit": 1,
+          "revisit": -1,
           "minLength": 0,
           "quickTests": [
             [

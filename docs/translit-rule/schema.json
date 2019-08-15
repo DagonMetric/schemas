@@ -140,8 +140,9 @@
           "type": "array"
         },
         "revisit": {
-          "description": "Set true for re-checking with other rule items.",
-          "type": "boolean"
+          "description": "Revisit replaced string.",
+          "minimum": 1,
+          "type": "number"
         },
         "to": {
           "description": "The value to replace the matched string.",
