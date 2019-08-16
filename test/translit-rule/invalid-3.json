@@ -62,7 +62,8 @@
                 "Option1": 5
               }
             }
-          ]
+          ],
+          "postRulesStrategy": "strategy1"
         }
       ]
     }

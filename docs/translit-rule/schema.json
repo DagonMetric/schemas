@@ -19,6 +19,14 @@
     }
   ],
   "definitions": {
+    "PostRulesStrategy": {
+      "description": "Post rules looping and matching strategy.",
+      "enum": [
+        "matchStart",
+        "whileMatchAnyPos"
+      ],
+      "type": "string"
+    },
     "TplVar": {
       "additionalProperties": {
         "type": "string",
@@ -108,6 +116,10 @@
           },
           "description": "The key value pair of `orGroup` and `start` index for `postRules` items.",
           "type": "object"
+        },
+        "postRulesStrategy": {
+          "$ref": "#/definitions/PostRulesStrategy",
+          "description": "Post rules looping and matching strategy. Default is `matchStart`."
         },
         "quickTests": {
           "description": "Array of input string [char, index] for quick checking.",

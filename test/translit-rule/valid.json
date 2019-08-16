@@ -70,7 +70,8 @@
                 "option1": true
               }
             }
-          ]
+          ],
+          "postRulesStrategy": "whileMatchAnyPos"
         }
       ]
     }
