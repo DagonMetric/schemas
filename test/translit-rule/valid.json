@@ -11,14 +11,22 @@
       "when": {
         "option1": true
       },
+      "skip": {
+        "option2": true
+      },
       "tplVar": {
         "#x": "\u1000\u1001"
       },
       "tplSeq": {
-        "#s": [
+        "@s": [
           [
             "\u1000",
             "",
+            1
+          ],
+          [
+            "\u1000\u1001",
+            "\u1000\u1001",
             1
           ],
           [
@@ -38,6 +46,9 @@
             "orGroup": "a",
             "when": {
               "option1": true
+            },
+            "skip": {
+              "option2": true
             }
           }
         ]
@@ -48,12 +59,15 @@
           "to": "$1",
           "hasLeft": true,
           "left": "\u1000",
+          "right": "[\u1000-\u1021]",
           "description": "Rule 1",
           "minLength": 1,
-          "revisit": 1,
           "quickTests": [["\u1000", 1], ["#s", 2]],
           "when": {
             "option1": true
+          },
+          "skip": {
+            "option2": true
           },
           "postRulesRef": "prs1",
           "postRulesStart": {
@@ -71,7 +85,7 @@
               }
             }
           ],
-          "postRulesStrategy": "whileMatchAnyPos"
+          "postRulesStrategy": "whileMatch"
         }
       ]
     }

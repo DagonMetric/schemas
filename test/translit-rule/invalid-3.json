@@ -17,14 +17,14 @@
         "x": ""
       },
       "tplSeq": {
-        "s1": [],
-        "#s2": [
+        "@s1": [],
+        "@s2": [
           [
             "\u1000",
             "\u1000"
           ]
         ],
-        "#s3": [
+        "@s3": [
           [
             "\u1000",
             "\u1001",
@@ -39,9 +39,10 @@
           "description": {},
           "hasLeft": 1,
           "left": 1,
+          "right": true,
+          "skip": true,
           "postRulesRef": true,
           "postRulesStart": 5,
-          "revisit": -1,
           "minLength": 0,
           "quickTests": [
             [
